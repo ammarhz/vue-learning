@@ -1,7 +1,7 @@
-# Created Sign up button component and empty Sign up page
+# Created Login button component and empty Login page
 
-## Sign up compoent hooked up to home page
+## Login button compoent hooked up to home page
 
-## Sign up button routs to sign up page
+## Login button routs to login page
 
-## sign up page shows text "Sign Up"
+## login page shows text "Login Page"
