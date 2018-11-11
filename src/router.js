@@ -18,5 +18,10 @@ export default new Router({
       name: 'SignUpPage',
       component: SignUpPage,
     },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: () => import ('./views/LoginPage.vue'),
+    },
   ],
 });
