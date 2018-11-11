@@ -1,31 +1,7 @@
-# vue-learning
+# Created Sign up button component and empty Sign up page
 
-## Project setup
-```
-npm install
-```
+## Sign up compoent hooked up to home page
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Sign up button routs to sign up page
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
+## sign up page shows text "Sign Up"

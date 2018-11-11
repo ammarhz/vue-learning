@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/imgs/logo.png">
-    <Null msg="Welcome to Your Vue.js App"/>
+    <SignUpButton/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Null from '@/components/Null.vue';
+import SignUpButton from '@/components/SignUpButton.vue';
 
 export default {
   name: 'home',
   components: {
-    Null,
+    SignUpButton,
   },
 };
 </script>
