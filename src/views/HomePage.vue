@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import Null from '@/components/Null.vue';
+import Null from '../components/Null.vue';
 
 export default {
   name: 'home',
