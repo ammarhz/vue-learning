@@ -19,11 +19,14 @@
         </div>
         <div class="form-group">
           <label for="password" class="control-label">Password:</label>
-          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required/>
+          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required @input="isDisplaying"/>
         </div>
         <div class="form-group">
           <label for="confirmPassword" class="control-label">Confirm Password:</label>
-          <input v-model="User.confirmPassword" id="confirmPassword" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="5" placeholder="..." required/>
+          <input v-model="User.confirmPassword" id="confirmPassword" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="5" placeholder="..." required @input="isDisplaying"/>
+        </div>
+        <div v-show="showAlert">
+          <p class="text-danger" v-if="passwordMismatch">Password do not match!!</p>
         </div>
         <button id="submit" type="submit" class="btn btn-block btn-success">Register</button>
       </form>
@@ -43,11 +46,22 @@ export default {
         password: '',
         confirmPassword: '',
       },
+      showAlert: false,
+      passwordMismatch: false,
     };
   },
   methods: {
     addNewUser() {
-      console.log(JSON.stringify(this.$data.User));
+      if (this.$data.User.password === this.$data.User.confirmPassword) {
+        console.log(JSON.stringify(this.$data.User));
+      } else {
+        this.$data.showAlert = true;
+        this.$data.passwordMismatch = true;
+      }
+    },
+    isDisplaying() {
+      this.$data.showAlert = false;
+      this.$data.passwordMismatch = false;
     },
   },
 };
