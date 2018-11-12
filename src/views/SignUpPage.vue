@@ -6,14 +6,14 @@
 
 
 <script>
-  import SignUpForm from '../components/SignUpForm';
-  
-  export default {
-    name: 'SignUpPage',
-    components: {
-      SignUpForm,
-    }
-  };
+import SignUpForm from '../components/SignUpForm.vue';
+
+export default {
+  name: 'SignUpPage',
+  components: {
+    SignUpForm,
+  },
+};
 </script>
 
 <style scoped>

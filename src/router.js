@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-//import HomePage from './views/HomePage.vue';
+// import HomePage from './views/HomePage.vue';
 import SignUpPage from './views/SignUpPage.vue';
 
 Vue.use(Router);
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'HomePage',
-      component: () => import ('./views/HomePage.vue'), //another way to import and use component in router
+      component: () => import('./views/HomePage.vue'), // another way to import and use component in router
     },
     {
       path: '/signup',
@@ -21,7 +21,7 @@ export default new Router({
     {
       path: '/login',
       name: 'LoginPage',
-      component: () => import ('./views/LoginPage.vue'),
+      component: () => import('./views/LoginPage.vue'),
     },
   ],
 });

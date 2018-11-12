@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
           <label for="password" class="control-label">Password:</label>
-          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required/>
+          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required minlength="6" maxlength="16"/>
         </div>
         <div class="form-group">
           <label for="confirmPassword" class="control-label">Confirm Password:</label>
@@ -32,25 +32,25 @@
 </template>
 
 <script>
-  export default {
-    name: 'SignUpForm',
-    data() {
-      return {
-        User: {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-        }
-      }
+export default {
+  name: 'SignUpForm',
+  data() {
+    return {
+      User: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
+    };
+  },
+  methods: {
+    addNewUser() {
+      console.log(JSON.stringify(this.$data.User));
     },
-    methods: {
-      addNewUser() {
-        console.log(JSON.stringify(this.$data.User));
-      }
-    }
-  };
+  },
+};
 </script>
 
 <style scoped>

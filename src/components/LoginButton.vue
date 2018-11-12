@@ -1,19 +1,18 @@
 <template>
   <div class="container">
     <router-link to="/login">
-      <button id="loginBtn" type="submit" class="btn btn-primary btn-block">Login</button> 
+      <button id="loginBtn" type="submit" class="btn btn-primary btn-block">Login</button>
     </router-link>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'LoginButton',
-    data() {
-      return {
-      }
-    }
-  };
+export default {
+  name: 'LoginButton',
+  data() {
+
+  },
+};
 </script>
 
 <style scoped>
