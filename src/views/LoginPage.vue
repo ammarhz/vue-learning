@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'LoginPage',
-    components: {
-    },
-  };
+export default {
+  name: 'LoginPage',
+  components: {
+  },
+};
 </script>
 
 <style scoped>
