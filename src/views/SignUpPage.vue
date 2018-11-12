@@ -1,7 +1,7 @@
 <template>
-  <dive>
+  <div>
     <h1>Sign Up</h1>
-  </dive>
+  </div>
 </template>
 
 
