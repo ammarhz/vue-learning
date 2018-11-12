@@ -1,22 +1,22 @@
 <template>
   <div class="container">
     <router-link to="/signup">
-      <button id="signUpBtn" type="submit" class="btn btn-primary btn-block">Sign Up</button> 
+      <button id="signUpBtn" type="submit" class="btn btn-primary btn-block">Sign Up</button>
     </router-link>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'SignUpButton',
-    data() {
-      return {
-      }
-    }
-  };
+export default {
+  name: 'SignUpButton',
+  data() {
+    return {
+    };
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .container {
     width: 10%;
   }

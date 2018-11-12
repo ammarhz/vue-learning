@@ -6,15 +6,12 @@
 
 
 <script>
-  import SignUpForm from '../components/SignUpForm';
-  
-  export default {
-    name: 'SignUpPage',
-    components: {
-      SignUpForm,
-    }
-  };
-</script>
+import SignUpForm from '../components/SignUpForm.vue';
 
-<style scoped>
-</style>
+export default {
+  name: 'SignUpPage',
+  components: {
+    SignUpForm,
+  },
+};
+</script>

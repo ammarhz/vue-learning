@@ -32,28 +32,28 @@
 </template>
 
 <script>
-  export default {
-    name: 'SignUpForm',
-    data() {
-      return {
-        User: {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-        }
-      }
+export default {
+  name: 'SignUpForm',
+  data() {
+    return {
+      User: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
+    };
+  },
+  methods: {
+    addNewUser() {
+      console.log(JSON.stringify(this.$data.User));
     },
-    methods: {
-      addNewUser() {
-        console.log(JSON.stringify(this.$data.User));
-      }
-    }
-  };
+  },
+};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .container-fluid {
     width: 800px;
   }
