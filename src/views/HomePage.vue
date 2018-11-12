@@ -5,8 +5,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import SignUpButton from '@/components/SignUpButton.vue';
+import SignUpButton from '../components/SignUpButton.vue';
 
 export default {
   name: 'home',

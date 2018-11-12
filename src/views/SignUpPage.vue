@@ -6,12 +6,11 @@
 
 
 <script>
-  export default {
-    name: 'SignUpPage',
-    components: {
-      
-    }
-  };
+export default {
+  name: 'SignUpPage',
+  components: {
+  },
+};
 </script>
 
 <style scoped>

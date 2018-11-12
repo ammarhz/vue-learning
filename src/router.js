@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'HomePage',
-      component: () => import ('./views/HomePage.vue') // another way to import and use component in router
+      component: () => import('./views/HomePage.vue'), // another way to import and use component in router
     },
     {
       path: '/signup',
