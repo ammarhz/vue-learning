@@ -1,7 +1,5 @@
-# Created Login button component and empty Login page
+# Created sign up form component
 
-## Login button compoent hooked up to home page
+## sign up form compoent hooked up to sign up page
 
-## Login button routs to login page
-
-## login page shows text "Login Page"
+## on submit, JSON array will print out in console

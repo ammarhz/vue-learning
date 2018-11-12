@@ -1,15 +1,17 @@
 <template>
-  <dive>
-    <h1>Sign Up</h1>
-  </dive>
+  <div>
+    <SignUpForm/>
+  </div>
 </template>
 
 
 <script>
+  import SignUpForm from '../components/SignUpForm';
+  
   export default {
     name: 'SignUpPage',
     components: {
-      
+      SignUpForm,
     }
   };
 </script>
