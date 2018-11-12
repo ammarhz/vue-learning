@@ -16,7 +16,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .container {
     width: 10%;
   }
