@@ -10,12 +10,13 @@
 export default {
   name: 'SignUpButton',
   data() {
-
+    return {
+    };
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .container {
     width: 10%;
   }

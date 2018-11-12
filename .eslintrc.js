@@ -14,4 +14,6 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
+  // allow max length of a line to be 200
+  'max-len': ["error", { "code": 300 }],
 };

@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .container-fluid {
     width: 800px;
   }
