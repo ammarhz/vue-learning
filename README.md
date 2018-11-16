@@ -1,5 +1,7 @@
-# Created sign up form component
+# Created login form component
 
-## sign up form compoent hooked up to sign up page
+## login form compoent hooked up to login page
 
-## on submit, JSON array will print out in console
+## created store and add data into state and getters
+
+## on submit, calling computed method through v-bind:class to get the data through getters from state and iterate thought it to find the user by matching email entered into login form and show alert accordingly.
