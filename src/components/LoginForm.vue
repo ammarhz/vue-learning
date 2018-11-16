@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <div class="w-100 p-3 border">
       <div class="text-center">
-        <h1>Login</h1>
+        <h1>{{ heading }}</h1>
       </div>
-      <form @submit.prevent="login" class="card-body">
+      <form @submit.prevent="login" class="card-body" v-if="heading === 'Login'">
         <div class="form-group">
           <label for="email" class="control-label">Email:</label>
           <input v-model="User.email" id="email" class="input-md textInput form-control" type="email" autofocus="autofocus" tabindex="1" placeholder="..." required @input="isDisplaying"/>
@@ -13,12 +13,12 @@
           <label for="password" class="control-label">Password:</label>
           <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="2" placeholder="..." required @input="isDisplaying"/>
         </div>
-        <div v-show="showAlert" v-bind:class="getUserData">
-          <p class="alert alert-success" v-if="userNameFromStore !=''">Welcome {{ userNameFromStore }}</p>
-          <p class="alert alert-danger" v-else>User Does Not Exist</p>
-        </div>
         <button id="submit" type="submit" class="btn btn-block btn-success">Login</button>
       </form>
+      <div v-show="showAlert">
+        <p class="alert alert-success text-center" v-if="heading === 'Login Successful'">Welcome {{ userNameFromStore }}</p>
+        <p class="alert alert-danger" v-else>Invalid Username or Password</p>
+      </div>
     </div>
   </div>
 </template>
@@ -35,25 +35,25 @@ export default {
       showAlert: false,
       userData: this.$store.getters.getUserData,
       userNameFromStore: '',
+      heading: 'Login',
     };
   },
   methods: {
     login() {
+      for(let i = 0; i < this.$data.userData.length; i++) {
+        if (this.$data.userData[i].email === this.$data.User.email) {
+          if (this.$data.userData[i].password === this.$data.User.password) {
+            this.$data.userNameFromStore = this.$data.userData[i].firstName;
+            this.$data.heading = 'Login Successful';
+            break;
+          }
+        }
+      }
       this.$data.showAlert = true;
     },
     isDisplaying() {
       this.$data.showAlert = false;
-    },
-  },
-  computed: {
-    getUserData() {
-      for (let i = 0; i<this.$data.userData.length; i++) {
-        if (this.$data.userData[i].email === this.$data.User.email) {
-          this.$data.userNameFromStore = this.$data.userData[i].firstName;
-          break;
-        }
-        this.$data.userNameFromStore = '';
-      }
+      this.$data.userNameFromStore = '';
     },
   },
 };

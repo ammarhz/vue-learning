@@ -1,7 +1,7 @@
-# Created login form component
+# Modified login form component
 
-## login form compoent hooked up to login page
+## login form disappears on successfull login and heading changes
 
-## created store and add data into state and getters
+## welcome alert shows after successful login
 
-## on submit, calling computed method through v-bind:class to get the data through getters from state and iterate thought it to find the user by matching email entered into login form and show alert accordingly.
+## computed removed and move function to methods and triggers at form submission.
