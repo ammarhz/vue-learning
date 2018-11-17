@@ -33,21 +33,16 @@ export default {
         password: '',
       },
       showAlert: false,
-      userData: this.$store.getters.getUserData,
       userNameFromStore: '',
       heading: 'Login',
     };
   },
   methods: {
     login() {
-      for(let i = 0; i < this.$data.userData.length; i++) {
-        if (this.$data.userData[i].email === this.$data.User.email) {
-          if (this.$data.userData[i].password === this.$data.User.password) {
-            this.$data.userNameFromStore = this.$data.userData[i].firstName;
-            this.$data.heading = 'Login Successful';
-            break;
-          }
-        }
+      this.$store.dispatch('REG_REQUEST', this.$data.User);
+      this.$data.userNameFromStore = this.$store.getters.getFirstName;
+      if (this.$data.userNameFromStore != '') {
+        this.$data.heading = 'Login Successful';
       }
       this.$data.showAlert = true;
     },

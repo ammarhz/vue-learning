@@ -1,7 +1,7 @@
-# Modified login form component
+# Modified login form component and store
 
-## login form disappears on successfull login and heading changes
+## Added action in store which iterate through users to find the right match to the data sent by the login method from loginform component
 
-## welcome alert shows after successful login
+## Dispatching the action from login method form from login form component and sending data to action
 
-## computed removed and move function to methods and triggers at form submission.
+## Getting the firstName string to compare and show the alert accordingly

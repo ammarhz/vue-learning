@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     status: '',
+    firstName: '',
     userData: [
       {
         firstName: 'Faizah',
@@ -28,16 +29,25 @@ export default new Vuex.Store({
         password: '123456',
         confirmPassword: '123456',
       },
-    ]
+    ],
   },
   getters: {
-    getUserData: (state) => {
-      return state.userData;
-    }
+    getFirstName: (state) => {
+      return state.firstName;
+    },
   },
   mutations: {
-
   },
   actions: {
+    REG_REQUEST: ({state, commit}, user) => {
+      for(let i = 0; i < state.userData.length; i++) {
+        if (state.userData[i].email === user.email) {
+          if (state.userData[i].password === user.password) {
+            state.firstName = state.userData[i].firstName;
+            break;
+          }
+        }
+      }
+    },
   },
 });
