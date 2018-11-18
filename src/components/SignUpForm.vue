@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <div class="w-100 p-3 border">
       <div class="text-center">
-        <h1>Sign Up</h1>
+        <h1>{{ heading }}</h1>
       </div>
-      <form @submit.prevent="addNewUser" class="card-body">
+      <form @submit.prevent="addNewUser" class="card-body" v-if="status !== 'success'">
         <div class="form-group">
           <label for="firstName" class="control-label">First Name:</label>
           <input v-model="User.firstName" id="firstName" class="input-md textInput form-control" type="text" autofocus="autofocus" tabindex="1" placeholder="..." required/>
@@ -19,17 +19,23 @@
         </div>
         <div class="form-group">
           <label for="password" class="control-label">Password:</label>
-          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required @input="isDisplaying"/>
+          <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="4" placeholder="6-16 characters" required @input="isDisplaying" minlength="6" maxlength="16"/>
         </div>
         <div class="form-group">
           <label for="confirmPassword" class="control-label">Confirm Password:</label>
           <input v-model="User.confirmPassword" id="confirmPassword" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="5" placeholder="..." required @input="isDisplaying"/>
         </div>
         <div v-show="showAlert">
+          <p class="text-danger" v-if="status === 'error'">Account already exist with this email!!</p>
           <p class="text-danger" v-if="passwordMismatch">Password do not match!!</p>
         </div>
         <button id="submit" type="submit" class="btn btn-block btn-success">Register</button>
       </form>
+      <div  id="loginLink" class="text text-success" v-else>
+        <router-link to="/login">
+          <a>Login</a>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -48,12 +54,21 @@ export default {
       },
       showAlert: false,
       passwordMismatch: false,
+      heading: 'Sign Up',
+      status: '',
     };
   },
   methods: {
     addNewUser() {
       if (this.$data.User.password === this.$data.User.confirmPassword) {
-        console.log(JSON.stringify(this.$data.User));
+        delete this.$data.User.confirmPassword;
+        this.$store.dispatch('REG_REQUEST', this.$data.User);
+        this.$data.status = this.$store.getters.getStatus;
+        if (this.$data.status === 'success') {
+          this.$data.heading = 'Thank you for registeration';
+        } else {
+          this.$data.showAlert = true;
+        }
       } else {
         this.$data.showAlert = true;
         this.$data.passwordMismatch = true;
@@ -62,6 +77,7 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
+      this.$data.status = '';
     },
   },
 };
@@ -82,5 +98,13 @@ export default {
   }
   input {
     background-color: #eee;
+  }
+  #loginLink {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.5em;
+  }
+  :hover a {
+    text-decoration: none;
   }
 </style>

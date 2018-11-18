@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch('REG_REQUEST', this.$data.User);
+      this.$store.dispatch('LOGIN_REQUEST', this.$data.User);
       this.$data.userNameFromStore = this.$store.getters.getFirstName;
       if (this.$data.userNameFromStore != '') {
         this.$data.heading = 'Login Successful';
