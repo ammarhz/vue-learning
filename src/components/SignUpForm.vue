@@ -61,11 +61,13 @@ export default {
   methods: {
     addNewUser() {
       if (this.$data.User.password === this.$data.User.confirmPassword) {
+        this.$data.User.firstName = this.$data.User.firstName.charAt(0).toUpperCase() + this.$data.User.firstName.slice(1);
+        this.$data.User.lastName = this.$data.User.lastName.charAt(0).toUpperCase() + this.$data.User.lastName.slice(1);
         delete this.$data.User.confirmPassword;
         this.$store.dispatch('REG_REQUEST', this.$data.User);
         this.$data.status = this.$store.getters.getStatus;
         if (this.$data.status === 'success') {
-          this.$data.heading = 'Thank you for registeration';
+          this.$data.heading = this.$data.User.firstName + '! Thank you for registeration';
         } else {
           this.$data.showAlert = true;
         }

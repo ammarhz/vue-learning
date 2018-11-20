@@ -8,6 +8,7 @@ export default new Vuex.Store({
     status: '',
     firstName: '',
     userExist: false,
+    loginGood: false,
     userData: [
       {
         firstName: 'Faizah',
@@ -28,6 +29,19 @@ export default new Vuex.Store({
     getStatus: state => { return state.status; },
   },
   mutations: {
+    LOGIN_REQUEST_CHECK: (state, user) => {
+      state.loginGood = false;
+      for (let i = 0; i < state.userData.length; i++) {
+        if (state.userData[i].email === user.email) {
+          if (state.userData[i].password === user.password) {
+            state.firstName = state.userData[i].firstName;
+            state.loginGood = true;
+            break;
+          }
+        }
+      }      
+    },
+    
     REG_REQUEST_LOADING: state => state.status = 'loading',
     REG_REQUEST_ERROR: state => state.status = 'error',
     REG_REQUEST_SUCCESS: state => state.status = 'success',
@@ -38,15 +52,11 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN_REQUEST: ({ state, commit }, user) => {
-      state.status = '';      
-      for (let i = 0; i < state.userData.length; i++) {
-        if (state.userData[i].email === user.email) {
-          if (state.userData[i].password === user.password) {
-            state.firstName = state.userData[i].firstName;
-            commit ('LOGIN_REQUEST_SUCCESS');
-            break;
-          }
-        }
+      commit ('LOGIN_REQUEST_CHECK', user);
+      if (state.loginGood) {
+        commit ('LOGIN_REQUEST_SUCCESS');
+      } else {
+        commit ('LOGIN_REQUEST_ERROR');
       }
     },
     REG_REQUEST: ({ state, commit }, user) => {

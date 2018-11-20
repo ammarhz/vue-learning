@@ -1,7 +1,7 @@
-# Modified store, sign up, login form component and store
+# Modified store and sign up form component
 
-## Added mutations in store to update the status
+## Added mutation for login request with for loop
 
-## Using commit command in actions to run the mutation method
+## Added conversion method to convert first letter of the name to uppercase
 
-## v-if with status condition in login and sign up form
+## Name also will show after successful sign up in the heading
