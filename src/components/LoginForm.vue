@@ -4,7 +4,7 @@
       <div class="text-center">
         <h1>{{ heading }}</h1>
       </div>
-      <form @submit.prevent="login" class="card-body" v-if="heading === 'Login'">
+      <form @submit.prevent="login" class="card-body" v-if="status != 'success'">
         <div class="form-group">
           <label for="email" class="control-label">Email:</label>
           <input v-model="User.email" id="email" class="input-md textInput form-control" type="email" autofocus="autofocus" tabindex="1" placeholder="..." required @input="isDisplaying"/>
@@ -16,7 +16,7 @@
         <button id="submit" type="submit" class="btn btn-block btn-success">Login</button>
       </form>
       <div v-show="showAlert">
-        <p class="alert alert-success text-center" v-if="heading === 'Login Successful'">Welcome {{ userNameFromStore }}</p>
+        <p class="alert alert-success text-center" v-if="status == 'success'">Welcome {{ userNameFromStore }}</p>
         <p class="alert alert-danger" v-else>Invalid Username or Password</p>
       </div>
     </div>
@@ -35,20 +35,21 @@ export default {
       showAlert: false,
       userNameFromStore: '',
       heading: 'Login',
+      status: '',
     };
   },
   methods: {
     login() {
       this.$store.dispatch('LOGIN_REQUEST', this.$data.User);
       this.$data.userNameFromStore = this.$store.getters.getFirstName;
-      if (this.$data.userNameFromStore != '') {
+      if (this.$store.getters.getStatus === 'success') {
         this.$data.heading = 'Login Successful';
+        this.$data.status = this.$store.getters.getStatus;
       }
       this.$data.showAlert = true;
     },
     isDisplaying() {
       this.$data.showAlert = false;
-      this.$data.userNameFromStore = '';
     },
   },
 };

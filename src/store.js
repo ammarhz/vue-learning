@@ -24,39 +24,43 @@ export default new Vuex.Store({
     ],
   },
   getters: {
-    getFirstName: (state) => {
-      return state.firstName;
-    },
-    getStatus: (state) => {
-      return state.status;
-    },
+    getFirstName: state => { return state.firstName; },
+    getStatus: state => { return state.status; },
   },
   mutations: {
+    REG_REQUEST_LOADING: state => state.status = 'loading',
+    REG_REQUEST_ERROR: state => state.status = 'error',
+    REG_REQUEST_SUCCESS: state => state.status = 'success',
+
+    LOGIN_REQUEST_LOADING: state => state.status = 'loading',
+    LOGIN_REQUEST_ERROR: state => state.status = 'error',
+    LOGIN_REQUEST_SUCCESS: state => state.status = 'success',
   },
   actions: {
-    LOGIN_REQUEST: ({ state }, user) => {
+    LOGIN_REQUEST: ({ state, commit }, user) => {
+      state.status = '';      
       for (let i = 0; i < state.userData.length; i++) {
         if (state.userData[i].email === user.email) {
           if (state.userData[i].password === user.password) {
             state.firstName = state.userData[i].firstName;
+            commit ('LOGIN_REQUEST_SUCCESS');
             break;
           }
         }
       }
     },
-    REG_REQUEST: ({ state }, user) => {
-      state.status = '';
+    REG_REQUEST: ({ state, commit }, user) => {
       state.userExist = false;
       for (let i = 0; i < state.userData.length; i++) {
         if (user.email === state.userData[i].email) {
           state.userExist = true;
-          state.status = 'error';
+          commit ('REG_REQUEST_ERROR');
           break;
         }
       }
       if (!state.userExist) {
         state.userData.push(user);
-        state.status = 'success';
+        commit ('REG_REQUEST_SUCCESS');
       }
     },
   },

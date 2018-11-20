@@ -1,7 +1,7 @@
-# Modified sign up form component and store
+# Modified store, sign up, login form component and store
 
-## Added action in store which takes user data from sign up form and iterate throught the data in store to see if user already exist and change the status accordingly
+## Added mutations in store to update the status
 
-## Dispatching the action in addUser method from sign up form component and sending data to action
+## Using commit command in actions to run the mutation method
 
-## welcome message and login link shows when sign up seccessfull and hides form.
+## v-if with status condition in login and sign up form
