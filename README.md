@@ -1,7 +1,5 @@
-# Modified store and sign up form component
+# Modified store
 
-## Added mutation for login request with for loop
+## Added a Promise method in Reg request action
 
-## Added conversion method to convert first letter of the name to uppercase
-
-## Name also will show after successful sign up in the heading
+## Added empty then and catch methods
