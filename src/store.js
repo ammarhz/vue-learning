@@ -61,7 +61,7 @@ export default new Vuex.Store({
     }, 
     REG_REQUEST: ({ state, commit }, user) => {
       state.userExist = false;
-      return new Promise ((resolve, error) => {
+      return new Promise ((resolve, reject) => {
         for (let i = 0; i < state.userData.length; i++) {
           if (user.email === state.userData[i].email) {
             resolve('user exist');
@@ -69,7 +69,7 @@ export default new Vuex.Store({
             state.userExist = true;
             break;
           } else {
-            error ('user dont exist');
+            reject ('user dont exist');
             commit ('REG_REQUEST_SUCCESS');
           }
         }
