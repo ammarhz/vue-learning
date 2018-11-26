@@ -41,6 +41,15 @@ export default new Vuex.Store({
         }
       }      
     },
+    REG_REQUEST_CHECK: (state, user) => {
+      state.userExist = false;
+      for (let i = 0; i < state.userData.length; i++) {
+        if (user.email === state.userData[i].email) {
+          state.userExist = true;
+          break;
+        }
+      }
+    },
     
     REG_REQUEST_LOADING: state => state.status = 'loading',
     REG_REQUEST_ERROR: state => state.status = 'error',
@@ -52,22 +61,20 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN_REQUEST: ({ state, commit }, user) => {
-      commit ('LOGIN_REQUEST_CHECK', user);
-      if (state.loginGood) {
-        commit ('LOGIN_REQUEST_SUCCESS');
-      } else {
-        commit ('LOGIN_REQUEST_ERROR');
-      }
+      return new Promise ((resolve, reject) => {
+        commit ('LOGIN_REQUEST_CHECK', user);
+        if (state.loginGood) {
+          commit ('LOGIN_REQUEST_SUCCESS');
+          resolve('login success');
+        } else {
+          commit ('LOGIN_REQUEST_ERROR');
+          reject ('login failed');
+        }
+      })
     }, 
     REG_REQUEST: ({ state, commit }, user) => {
-      state.userExist = false;
       return new Promise ((resolve, reject) => {
-        for (let i = 0; i < state.userData.length; i++) {
-          if (user.email === state.userData[i].email) {
-            state.userExist = true;
-            break;
-          }
-        }
+        commit ('REG_REQUEST_CHECK', user);
         if (state.userExist) {
           commit ('REG_REQUEST_ERROR');
           reject ('user exist');

@@ -1,7 +1,7 @@
-# Modified store and sign up form
+# Modified store, login form and sign up form
 
-## Modified the Promise method in Reg request action
+## Modified the Promise method in Reg request action, moved the exisiting user loop to the new mutation
 
-## Pull the if statement inside the promise and use resolve reject in it
+## Created the promise in Login request action
 
-## Replace the nested if statement with .then and .catch in sign up form component
+## Replaced the if statement with .then and .catch in login form component

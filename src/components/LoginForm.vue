@@ -40,13 +40,16 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch('LOGIN_REQUEST', this.$data.User);
-      this.$data.userNameFromStore = this.$store.getters.getFirstName;
-      if (this.$store.getters.getStatus === 'success') {
+      this.$store.dispatch('LOGIN_REQUEST', this.$data.User)
+      .then ((response) => {
+        this.$data.showAlert = true;
+        this.$data.userNameFromStore = this.$store.getters.getFirstName;
         this.$data.heading = 'Login Successful';
         this.$data.status = this.$store.getters.getStatus;
-      }
-      this.$data.showAlert = true;
+      })
+      .catch ((error) => {
+        this.$data.showAlert = true;
+      })
     },
     isDisplaying() {
       this.$data.showAlert = false;
