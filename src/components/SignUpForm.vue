@@ -64,13 +64,15 @@ export default {
         this.$data.User.firstName = this.$data.User.firstName.charAt(0).toUpperCase() + this.$data.User.firstName.slice(1);
         this.$data.User.lastName = this.$data.User.lastName.charAt(0).toUpperCase() + this.$data.User.lastName.slice(1);
         delete this.$data.User.confirmPassword;
-        this.$store.dispatch('REG_REQUEST', this.$data.User);
-        this.$data.status = this.$store.getters.getStatus;
-        if (this.$data.status === 'success') {
+        this.$store.dispatch('REG_REQUEST', this.$data.User)
+        .then ((response) => {  // response = 'user dont exist'
+          this.$data.status = this.$store.getters.getStatus;
           this.$data.heading = this.$data.User.firstName + '! Thank you for registeration';
-        } else {
+        })
+        .catch ((error) => {  // error = 'user exist'
+          this.$data.status = this.$store.getters.getStatus;
           this.$data.showAlert = true;
-        }
+        })
       } else {
         this.$data.showAlert = true;
         this.$data.passwordMismatch = true;

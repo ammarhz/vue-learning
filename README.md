@@ -1,5 +1,7 @@
-# Modified store
+# Modified store and sign up form
 
-## Added a Promise method in Reg request action
+## Modified the Promise method in Reg request action
 
-## Added empty then and catch methods
+## Pull the if statement inside the promise and use resolve reject in it
+
+## Replace the nested if statement with .then and .catch in sign up form component
