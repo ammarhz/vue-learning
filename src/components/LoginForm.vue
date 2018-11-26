@@ -44,14 +44,16 @@ export default {
       .then ((response) => {
         this.$data.showAlert = true;
         this.$data.userNameFromStore = this.$store.getters.getFirstName;
-        this.$data.heading = 'Login Successful';
-        this.$data.status = this.$store.getters.getStatus;
+        this.$data.heading = response;
+        this.$data.status = this.$store.getters.getLoginStatus;
       })
       .catch ((error) => {
+        this.$data.heading = error;
         this.$data.showAlert = true;
       })
     },
     isDisplaying() {
+      this.$data.heading = 'Login';
       this.$data.showAlert = false;
     },
   },

@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <label for="email" class="control-label">Email:</label>
-          <input v-model="User.email" id="email" class="input-md textInput form-control" type="email" autofocus="autofocus" tabindex="3" placeholder="..." required/>
+          <input v-model="User.email" id="email" class="input-md textInput form-control" type="email" autofocus="autofocus" tabindex="3" placeholder="..." required @input="isDisplaying"/>
         </div>
         <div class="form-group">
           <label for="password" class="control-label">Password:</label>
@@ -66,11 +66,12 @@ export default {
         delete this.$data.User.confirmPassword;
         this.$store.dispatch('REG_REQUEST', this.$data.User)
         .then ((response) => {  // response = 'user dont exist'
-          this.$data.status = this.$store.getters.getStatus;
-          this.$data.heading = this.$data.User.firstName + '! Thank you for registeration';
+          this.$data.status = this.$store.getters.getRegStatus;
+          this.$data.heading = this.$data.User.firstName + response;
         })
         .catch ((error) => {  // error = 'user exist'
-          this.$data.status = this.$store.getters.getStatus;
+          this.$data.status = this.$store.getters.getRegStatus;
+          this.$data.heading = error;
           this.$data.showAlert = true;
         })
       } else {
@@ -79,6 +80,7 @@ export default {
       }
     },
     isDisplaying() {
+      this.$data.heading = 'Sign Up';
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
       this.$data.status = '';
