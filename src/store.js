@@ -38,7 +38,8 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN_REQUEST: ({ state, commit }, user) => {
-      state.status = '';      
+      state.status = '';
+      state.firstName = '';
       for (let i = 0; i < state.userData.length; i++) {
         if (state.userData[i].email === user.email) {
           if (state.userData[i].password === user.password) {
@@ -51,6 +52,7 @@ export default new Vuex.Store({
     },
     REG_REQUEST: ({ state, commit }, user) => {
       state.userExist = false;
+      state.status = '';
       for (let i = 0; i < state.userData.length; i++) {
         if (user.email === state.userData[i].email) {
           state.userExist = true;
