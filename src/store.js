@@ -40,6 +40,7 @@ export default new Vuex.Store({
   },
   actions: {
     REG_REQUEST: ({state, commit}, user) => {
+      state.firstName = '';
       for(let i = 0; i < state.userData.length; i++) {
         if (state.userData[i].email === user.email) {
           if (state.userData[i].password === user.password) {
