@@ -58,13 +58,20 @@ export default {
         this.$data.showAlert = true;
         this.$data.passwordMismatch = true;
       }
+      this.resetForm();
     },
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
     },
     resetForm() {
-      Object.assign(this.$data, this.$options.data.call(this));
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };
