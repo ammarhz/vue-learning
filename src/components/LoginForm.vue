@@ -4,7 +4,7 @@
       <div class="text-center">
         <h1>Login</h1>
       </div>
-      <form @submit.prevent="login" class="card-body">
+      <form @submit.prevent="login(); getUserData" class="card-body">
         <div class="form-group">
           <label for="email" class="control-label">Email:</label>
           <input v-model="User.email" id="email" class="input-md textInput form-control" type="email" autofocus="autofocus" tabindex="1" placeholder="..." required @input="isDisplaying"/>
@@ -13,7 +13,7 @@
           <label for="password" class="control-label">Password:</label>
           <input v-model="User.password" id="password" class="input-md textInput form-control" type="password" autofocus="autofocus" tabindex="2" placeholder="..." required @input="isDisplaying"/>
         </div>
-        <div v-show="showAlert" v-bind:class="getUserData">
+        <div v-show="showAlert">
           <p class="alert alert-success" v-if="userNameFromStore !=''">Welcome {{ userNameFromStore }}</p>
           <p class="alert alert-danger" v-else>User Does Not Exist</p>
         </div>
@@ -44,6 +44,15 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
     },
+    resetForm() {
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
+    },
   },
   computed: {
     getUserData() {
@@ -54,6 +63,7 @@ export default {
         }
         this.$data.userNameFromStore = '';
       }
+      this.resetForm();
     },
   },
 };
