@@ -4,7 +4,7 @@
       <div class="text-center">
         <h1>Sign Up</h1>
       </div>
-      <form @submit.prevent="addNewUser" class="card-body">
+      <form @submit.prevent="addNewUser(); resetForm()" class="card-body">
         <div class="form-group">
           <label for="firstName" class="control-label">First Name:</label>
           <input v-model="User.firstName" id="firstName" class="input-md textInput form-control" type="text" autofocus="autofocus" tabindex="1" placeholder="..." required/>
@@ -62,6 +62,9 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
+    },
+    resetForm() {
+      Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };
