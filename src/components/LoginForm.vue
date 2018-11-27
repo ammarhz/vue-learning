@@ -43,12 +43,22 @@ export default {
       this.$data.userNameFromStore = this.$store.getters.getFirstName;
       if (this.$data.userNameFromStore != '') {
         this.$data.heading = 'Login Successful';
+        this.resetForm();
       }
       this.$data.showAlert = true;
     },
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.userNameFromStore = '';
+    },
+    resetForm() {
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };

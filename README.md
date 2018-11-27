@@ -5,3 +5,5 @@
 ## Dispatching the action in addUser method from sign up form component and sending data to action
 
 ## welcome message and login link shows when sign up seccessfull and hides form.
+
+## Added resetForm method in signup and login form
