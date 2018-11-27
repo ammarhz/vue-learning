@@ -35,6 +35,7 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN_REQUEST: ({ state }, user) => {
+      state.firstName = '';
       for (let i = 0; i < state.userData.length; i++) {
         if (state.userData[i].email === user.email) {
           if (state.userData[i].password === user.password) {
