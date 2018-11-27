@@ -45,6 +45,7 @@ export default {
           if (this.$data.userData[i].password === this.$data.User.password) {
             this.$data.userNameFromStore = this.$data.userData[i].firstName;
             this.$data.heading = 'Login Successful';
+            this.resetForm();
             break;
           }
         }
@@ -54,6 +55,15 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.userNameFromStore = '';
+    },
+    resetForm() {
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };

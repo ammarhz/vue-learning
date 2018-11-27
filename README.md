@@ -5,3 +5,5 @@
 ## welcome alert shows after successful login
 
 ## computed removed and move function to methods and triggers at form submission.
+
+## added resetForm method in login form and signup form
