@@ -31,6 +31,8 @@ export default new Vuex.Store({
   mutations: {
     LOGIN_REQUEST_CHECK: (state, user) => {
       state.loginGood = false;
+      state.firstName = '';
+      state.status = '';
       for (let i = 0; i < state.userData.length; i++) {
         if (state.userData[i].email === user.email) {
           if (state.userData[i].password === user.password) {
@@ -61,6 +63,7 @@ export default new Vuex.Store({
     },
     REG_REQUEST: ({ state, commit }, user) => {
       state.userExist = false;
+      state.status = '';
       for (let i = 0; i < state.userData.length; i++) {
         if (user.email === state.userData[i].email) {
           state.userExist = true;
