@@ -5,3 +5,5 @@
 ## Dispatching the action from login method form from login form component and sending data to action
 
 ## Getting the firstName string to compare and show the alert accordingly
+
+## Added resetForm method in signup and login forms
