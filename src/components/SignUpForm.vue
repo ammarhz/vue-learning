@@ -68,6 +68,7 @@ export default {
         .then ((response) => {  // response = 'user dont exist'
           this.$data.status = this.$store.getters.getStatus;
           this.$data.heading = this.$data.User.firstName + '! Thank you for registeration';
+          this.resetForm();
         })
         .catch ((error) => {  // error = 'user exist'
           this.$data.status = this.$store.getters.getStatus;
@@ -81,7 +82,15 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
-      this.$data.status = '';
+    },
+    resetForm() {
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };

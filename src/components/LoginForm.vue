@@ -45,11 +45,21 @@ export default {
       if (this.$store.getters.getStatus === 'success') {
         this.$data.heading = 'Login Successful';
         this.$data.status = this.$store.getters.getStatus;
+        this.resetForm();
       }
       this.$data.showAlert = true;
     },
     isDisplaying() {
       this.$data.showAlert = false;
+    },
+    resetForm() {
+      // this will reset only User object data
+      var self = this;
+      Object.keys(this.User).forEach(function(key, index) {
+        self.User[key] = '';
+      });
+      // this will reset the whole data under return
+      // Object.assign(this.$data, this.$options.data.call(this));
     },
   },
 };
