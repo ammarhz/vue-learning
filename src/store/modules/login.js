@@ -13,6 +13,8 @@ export default {
   mutations: {
     LOGIN_REQUEST_CHECK: (state, user) => {
       state.loginGood = false;
+      state.firstName = '';
+      state.status = '';
       for (let i = 0; i < dataCenter.state.userData.length; i++) {
         if (dataCenter.state.userData[i].email === user.email) {
           if (dataCenter.state.userData[i].password === user.password) {

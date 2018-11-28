@@ -83,7 +83,6 @@ export default {
       this.$data.heading = 'Sign Up';
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
-      this.$data.status = '';
     },
   },
 };

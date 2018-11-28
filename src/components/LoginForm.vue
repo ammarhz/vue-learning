@@ -48,6 +48,7 @@ export default {
         this.$data.status = this.$store.getters.getLoginStatus;
       })
       .catch ((error) => {
+        this.$data.status = this.$store.getters.getLoginStatus;
         this.$data.heading = error;
         this.$data.showAlert = true;
       })

@@ -11,6 +11,7 @@ export default {
   mutations: {
     REG_REQUEST_CHECK: (state, user) => {
       state.userExist = false;
+      state.status = '';
       for (let i = 0; i < dataCenter.state.userData.length; i++) {
         if (user.email === dataCenter.state.userData[i].email) {
           state.userExist = true;
