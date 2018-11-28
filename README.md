@@ -5,3 +5,5 @@
 ## Created the promise in Login request action
 
 ## Replaced the if statement with .then and .catch in login form component
+
+## removed resetForm method due to errors

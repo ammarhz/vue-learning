@@ -81,7 +81,6 @@ export default {
     isDisplaying() {
       this.$data.showAlert = false;
       this.$data.passwordMismatch = false;
-      this.$data.status = '';
     },
   },
 };
