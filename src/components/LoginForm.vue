@@ -38,7 +38,21 @@ export default {
       status: '',
     };
   },
+////  mounted(), created(), and beforeMount() methods runs on page load
+  
+//  mounted() {
+//    this.test();
+//  },
+//  created() {
+//    this.test();
+//  },
+//  beforeMount() {
+//    this.test();
+//  },
   methods: {
+//    test() {
+//      console.log(':::::::::::::::::');
+//    },
     login() {
       this.$store.dispatch('LOGIN_REQUEST', this.$data.User)
       .then ((response) => {
